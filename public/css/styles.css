@@ -1,0 +1,7 @@
+.pokedex {
+  display: flex;
+}
+
+poke-list {
+  background-color: red;
+}

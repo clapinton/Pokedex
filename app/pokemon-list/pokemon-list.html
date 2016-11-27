@@ -1,0 +1,7 @@
+<h1>{{title}}</h1>
+<h2>All Pokemon</h2>
+<ul class="heroes">
+  <li *ngFor="let pkmn of allPokemon" (click)="onSelect(pkmn)" [class.selected]="pkmn === selectedPkmn">
+    <span class="badge">{{pkmn.id}}</span> {{pkmn.name}}
+  </li>
+</ul>
