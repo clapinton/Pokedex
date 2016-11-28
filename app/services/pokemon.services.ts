@@ -51,8 +51,8 @@ export class PokemonService {
       moves.forEach( (mv, idx) => {
         let eachMove = new Move();
         eachMove.name = mv.move.name;
-        eachMove.type = this.getMoveType(mv.move);
-        // console.log("Type of move ", mv, " is ", eachMove.type);
+        // Need to change the getType function to account for the async run
+        // eachMove.type = this.getMoveType(mv.move);
         eachMove.learnBy = mv.version_group_details[0].move_learn_method.name;
         eachMove.levelLearned = 0;
         if (eachMove.learnBy === "level-up"){
@@ -86,8 +86,8 @@ export class PokemonService {
   getMoveType(move): string {
     let moveType;
     let observable = this.http.get(move.url).map(this.extractMoveType);
-
     observable.subscribe(type => moveType = type);
+    // This returns before the API result. Need to rework to account for async response
     return moveType;
   }
 

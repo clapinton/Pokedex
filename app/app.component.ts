@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
       this.pokemonServices.getPokemonDescription(pkmnSpecies)
         .subscribe( description => {
           this.selectedPkmn.description = description;
-        })
+      });
     })
   }
 }
