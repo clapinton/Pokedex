@@ -35,6 +35,14 @@ export class AppComponent implements OnInit {
   }
 
   selectPokemon(pkmn: number) {
-    this.pokemonServices.getOnePokemonV1(pkmn).subscribe( pokemon => this.selectedPkmn = pokemon )
+    this.pokemonServices.getOnePokemonV2(pkmn).subscribe( pokemon => {
+      this.selectedPkmn = pokemon;
+
+      const pkmnSpecies = pokemon.species;
+      this.pokemonServices.getPokemonDescription(pkmnSpecies)
+        .subscribe( description => {
+          this.selectedPkmn.description = description;
+        })
+    })
   }
 }
