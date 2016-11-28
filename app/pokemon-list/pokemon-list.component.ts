@@ -19,5 +19,13 @@ export class PokemonListComponent {
   onSelect(pkmn: PokemonListItem) {
     this.selectPokemon.emit(pkmn);
     // this.selectedPkmn = pkmn;
-  } 
+  }
+
+  capitalizeName(pkmnName) {
+    return pkmnName.replace(/\b\w/g, l => l.toUpperCase());
+  }
+
+  formatPkmnId(pkmnId) {
+    return ("00" + pkmnId).slice(-3);
+  }
 }

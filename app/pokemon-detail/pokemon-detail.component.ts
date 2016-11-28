@@ -3,18 +3,9 @@ import { PokemonListItem } from '../pokemon';
 
 
 @Component ({
+  moduleId: module.id, //needed for relative paths
   selector: 'pokemon-detail',
-  template: `
-  <div *ngIf="pkmn">
-    <h2>{{pkmn.name}} details!</h2>
-    <div>
-      <label>id: </label>{{pkmn.id}}
-    </div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="pkmn.name" placeholder="name"/>
-    </div>
-  </div>`,
+  templateUrl: `pokemon-detail.html`,
 })
 
 export class PokemonDetailComponent {

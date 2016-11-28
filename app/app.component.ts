@@ -9,7 +9,6 @@ import { OnInit } from '@angular/core';
   selector: 'pokedex-app',
   providers: [PokemonService],
   template: `
-    <h1>{{title}}</h1>
     <div class="pokedex">
       <poke-list [allPokemon]="allPokemon" (selectPokemon)='selectPokemon($event)'></poke-list>
       <pokemon-detail [pkmn]="selectedPkmn"></pokemon-detail>
@@ -18,7 +17,6 @@ import { OnInit } from '@angular/core';
 })
 
 export class AppComponent implements OnInit {
-  title: string = 'Pokedex';
 
   //This is the same as writing a constructor and setting this.hero.name and this.hero.id
   selectedPkmn: PokemonListItem;
@@ -28,15 +26,15 @@ export class AppComponent implements OnInit {
   constructor(private pokemonServices: PokemonService) {};
 
   ngOnInit(): void {
-    this.getPokemons();
+    this.getAllPokemon();
   }
 
-  getPokemons(): void {
+  getAllPokemon(): void {
     //When we subscribe, the Observable service runs
     this.pokemonServices.getAllPokemon().subscribe( pkmns => this.allPokemon = pkmns );
   }
 
-  selectPokemon(pkmn: PokemonListItem) {
-    this.selectedPkmn = pkmn;
+  selectPokemon(pkmn: number) {
+    this.pokemonServices.getOnePokemonV1(pkmn).subscribe( pokemon => this.selectedPkmn = pokemon )
   }
 }
