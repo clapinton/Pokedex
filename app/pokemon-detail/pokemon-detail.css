@@ -1,0 +1,22 @@
+.pokemon-detail {
+  /*width: 70%;*/
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.pokemon-main-detail {
+}
+
+.pokemon-id, .pokemon-name {
+  text-align: center;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.pokemon-sprite {
+  margin: auto;
+  width: 96px;
+}
+
+.pokemon-meta {
+}

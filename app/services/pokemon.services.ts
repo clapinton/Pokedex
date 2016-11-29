@@ -65,12 +65,16 @@ export class PokemonService {
       return allMoves;
     }
 
+    const capitalize = str => str.replace(/\b\w/g, l => l.toUpperCase());
+
+
     let body = res.json();
     console.log("this is the data body: ", body);
     let pkmn = new PokemonListItem;
     pkmn.id = body.id;
-    pkmn.name = body.name;
+    pkmn.name = capitalize(body.species.name);
     pkmn.species = body.species;
+    pkmn.sprite = body.sprites.front_default;
     pkmn.height = body.height;
     pkmn.weight = body.weight;
     pkmn.types = body.types.map(tp => tp.type);

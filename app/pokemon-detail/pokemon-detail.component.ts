@@ -6,10 +6,16 @@ import { PokemonListItem } from '../pokemon';
   moduleId: module.id, //needed for relative paths
   selector: 'pokemon-detail',
   templateUrl: `pokemon-detail.html`,
+  styleUrls: ['pokemon-detail.css'],
 })
 
 export class PokemonDetailComponent {
   //Notation to clarify that hero is an input to the component
   @Input()
   pkmn: PokemonListItem;
+
+  formatPkmnId(pkmnId) {
+    return ("00" + pkmnId).slice(-3);
+  }
+  
 };
