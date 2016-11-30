@@ -1,5 +1,6 @@
 export class PokemonListItem {
   id: number;
+  stringId: string;
   name: string;
   species: Object;
   description: string;
@@ -14,8 +15,9 @@ export class PokemonListItem {
 }
 
 export class BaseStat {
-  name: string;
-  value: number;
+  base_stat: number;
+  percent: number;
+  stat: string;
 }
 
 export class Move {

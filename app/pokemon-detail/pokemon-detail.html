@@ -17,7 +17,7 @@ Moves
 
  -->
 
-<div *ngIf="pkmn" class="pokemon-detail">
+<div *ngIf="pkmn && pkmn.description" class="pokemon-detail">
 
 
   <div class="box box-white padded-box stripes pokemon-main-detail">
@@ -60,9 +60,25 @@ Moves
 
   </div>
 
-  <div class="box box-black padded-box stripes-light pokemon-base-stats">
-    <div *ngFor="let stat of pkmn.baseStats">
-      {{stat.stat}}: {{stat.base_stat}}
+  <section class="pokemon-base-stats">
+
+    <div class="section-header box box-blue stripes">
+      Base Stats
     </div>
-  </div>
+
+    <div class="box box-black padded-box stripes-light">
+      <div *ngFor="let stat of pkmn.baseStats" class="base-stats">
+        <div>
+          {{stat.stat}}:
+        </div>
+        <div class="base-stat-number">
+          {{stat.base_stat}}
+        </div>
+        <div class="value-bar-full stripes">
+          <div class="value-bar-percent stripes" [style.width]="stat.percent + '%'"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
 </div>

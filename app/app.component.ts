@@ -9,10 +9,26 @@ import { OnInit } from '@angular/core';
   selector: 'pokedex-app',
   providers: [PokemonService],
   template: `
-    <div class="pokedex">
-      <poke-list [allPokemon]="allPokemon" (selectPokemon)='selectPokemon($event)'></poke-list>
-      <pokemon-detail [pkmn]="selectedPkmn"></pokemon-detail>
-    </div>
+    <main class="pokedex">
+
+      <div class="pokedex-title box box-blue stripes">
+        <img src='../assets/images/8-bit-pokeball.png'/>
+        <h1>ngPokedex</h1>
+        <img src='../assets/images/8-bit-pokeball.png'/>
+      </div>
+
+      <div *ngIf="!allPokemon" class="loading">
+        <img src="http://orig05.deviantart.net/20e3/f/2014/227/0/0/pikahcu_pokemon_x_and_y_by_wittnebenbrian-d7v97vf.gif"/>
+        <p>Loading...</p>
+      </div>
+
+      <div class="pokedex-body">
+        <poke-list [allPokemon]="allPokemon" (selectPokemon)='selectPokemon($event)'></poke-list>
+        <pokemon-detail [pkmn]="selectedPkmn"></pokemon-detail>
+
+      </div>
+
+    </main>
     `
 })
 

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { PokemonListItem } from '../pokemon';
+import { capitalize, formatPkmnId } from '../helpers';
 
 @Component({
   moduleId: module.id, //needed for relative paths
@@ -21,11 +22,7 @@ export class PokemonListComponent {
     // this.selectedPkmn = pkmn;
   }
 
-  capitalizeName(pkmnName) {
-    return pkmnName.replace(/\b\w/g, l => l.toUpperCase());
-  }
-
-  formatPkmnId(pkmnId) {
-    return ("00" + pkmnId).slice(-3);
-  }
+  // Making the helper functions available to the template
+  capitalize = capitalize;
+  formatPkmnId = formatPkmnId;
 }

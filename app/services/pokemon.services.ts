@@ -2,7 +2,14 @@ import { Injectable } from '@angular/core';
 import { PokemonListItem, BaseStat, Move } from '../pokemon';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
-import { GAMES_GENERATIONS } from '../poke-constants';
+import { GAMES_GENERATIONS, BIGGEST_BASE_STATS } from '../poke-constants';
+import {
+  capitalize,
+  formatPkmnId,
+  removeDashCapitalize,
+  calculatePercent,
+} from '../helpers';
+
 
 import 'rxjs/add/operator/map';
 
@@ -41,9 +48,28 @@ export class PokemonService {
 
   extractOnePokemon(res: Response): PokemonListItem {
 
-    const extractStats = stats => {
-      let allStats = stats;
-      stats.forEach( (st, idx) => allStats[idx].stat = st.stat.name );
+    const extractStats:BaseStat[] = stats => {
+      let allStats = [];
+      stats.forEach( (st, idx) => {
+        let newStat = new BaseStat();
+
+        newStat['stat'] = removeDashCapitalize(st.stat.name);
+        let biggestStat = BIGGEST_BASE_STATS[st.stat.name];
+        newStat['base_stat'] = st.base_stat;
+        newStat['percent'] = calculatePercent(biggestStat, st.base_stat);
+
+        allStats.push(newStat);
+      });
+
+      let totalStat = new BaseStat();
+      totalStat['stat'] = "Total";
+      totalStat['base_stat'] =
+        allStats.reduce( (sum, stat) => sum+= stat.base_stat, 0);
+      let biggestStat = BIGGEST_BASE_STATS['total'];
+      totalStat['percent'] = calculatePercent(biggestStat, totalStat['base_stat']);
+
+      allStats.push(totalStat);
+
       console.log("This is the extracted allStats: ", allStats);
       return allStats;
     }
@@ -67,13 +93,11 @@ export class PokemonService {
       return allMoves;
     }
 
-    const capitalize = str => str.replace(/\b\w/g, l => l.toUpperCase());
-
     const calculateGenerations = games => {
       let gens = [];
       games.forEach(game => {
         // debugger
-        let gen = this.GAMES_GENERATIONS[game.name];
+        let gen = GAMES_GENERATIONS[game.name];
         if (!gens.find( g => g.name === gen.name)) gens.push(gen);
       })
       return gens.reverse();
@@ -84,6 +108,7 @@ export class PokemonService {
     console.log("this is the data body: ", body);
     let pkmn = new PokemonListItem;
     pkmn.id = body.id;
+    pkmn.stringId = formatPkmnId(body.id);
     pkmn.name = capitalize(body.species.name);
     pkmn.species = body.species;
     pkmn.sprite = body.sprites.front_default;

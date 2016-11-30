@@ -28,6 +28,23 @@
   )
 }
 
+.loading {
+  color: white;
+  font-size: 17px;
+  text-align: center;
+}
+
+.pokedex-title {
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+  text-shadow: black 0 2px;
+  width: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
 .box {
   border: solid 3px #363636;
   border-radius: 10px;
@@ -40,6 +57,7 @@
 
 .box-blue {
   background-color: #00AEE3;
+  color: white;
 }
 
 .box-white {
@@ -66,15 +84,22 @@
 }
 
 .pokedex {
-  display: flex;
   width: 1000px;
   margin: auto;
   background: rgba(0,0,0,0.5);
+  height: 100vh;
+  position: relative;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.pokedex-body {
+  display: flex;
   justify-content: space-around;
 }
 
 poke-list {
-  max-height: 100vh;
+  max-height: 85vh;
   overflow: scroll;
   width: 20%;
   min-width: 230px;
@@ -83,4 +108,31 @@ poke-list {
 pokemon-detail {
   width: 70%;
   margin: 7px 5px;
+}
+
+.section-header {
+  margin-left: 40px;
+  width: 170px;
+  text-align: center;
+  color: white;
+  padding: 5px 10px;
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+section {
+  margin-top: 30px;
+}
+
+.value-bar-full {
+  width: 60%;
+  height: 10px;
+  background-color: #7A7A7A;
+  margin-left: 20px;
+}
+
+.value-bar-percent {
+  height: 10px;
+  background-color: #31B754;
 }

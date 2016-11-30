@@ -1,4 +1,4 @@
-export GAMES_GENERATIONS: Object = {
+export const GAMES_GENERATIONS: Object = {
   'red': {name: 'gen-rby', fullName: 'Red • Blue • Yellow', number: 1},
   'green': {name: 'gen-rby', fullName: 'Red • Blue • Yellow', number: 1},
   'blue': {name: 'gen-rby', fullName: 'Red • Blue • Yellow', number: 1},
@@ -21,4 +21,14 @@ export GAMES_GENERATIONS: Object = {
   'black-2': {name: 'gen-bw', fullName: 'Black • White', number: 5},
   'white-2': {name: 'gen-bw', fullName: 'Black • White', number: 5},
   //Missing X/Y, Ruby/Saphire and Sun/Moon
+}
+
+export const BIGGEST_BASE_STATS: Object = {
+  'speed': 180,
+  'special-defense': 230,
+  'special-attack': 194,
+  'defense': 230,
+  'attack': 190,
+  'hp': 255,
+  'total': 780
 }
