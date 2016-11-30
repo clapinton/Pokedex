@@ -22,30 +22,47 @@ Moves
 
   <div class="box box-white padded-box stripes pokemon-main-detail">
 
-    <div class="pokemon-id">#{{formatPkmnId(pkmn.id)}}</div>
+    <div class="pokemon-header">
 
-    <div class="box box-blue stripes pokemon-sprite">
-      <img src="{{pkmn.sprite}}"/>
+      <div>
+        <div class="pokemon-id">#{{formatPkmnId(pkmn.id)}}</div>
+
+        <div class="box box-blue stripes pokemon-sprite">
+          <img src="{{pkmn.sprite}}"/>
+        </div>
+
+        <div class="pokemon-name">{{pkmn.name}}</div>
+      </div>
+
+      <div class="pokemon-types-games">
+        <div class="pokemon-types">
+          <div *ngFor="let type of pkmn.types" class="type type-{{type.name}}">{{type.name}}
+          </div>
+        </div>
+
+        <div class="pokemon-games">
+          <div *ngFor="let gen of pkmn.generations" class="generation {{gen.name}}">
+            <span class="tooltip tooltip-{{gen.name}} {{gen.name}}">{{gen.fullName}}</span>
+            {{gen.number}}
+          </div>
+        </div>
+
+      </div>
+
+
     </div>
-
-    <div class="pokemon-name">{{pkmn.name}}</div>
 
     <div class="pokemon-meta">
       <div class="description">
         <p>{{pkmn.description}}</p>
       </div>
-      <!-- <div class="weight-height">
-        <p>Height: {{pkmn.height}}</p>
-        <p>Height: {{pkmn.weight}}</p>
-      </div> -->
     </div>
 
-    <div class="pokemon-type">
-      <div *ngFor="let type of pkmn.types" class={{type.name}}>{{type.name}}
-      </div>
-      <!-- <div class={{pkmn.types[0].name}}>{{pkmn.types[0].name}}</div> -->
-      <!-- <div class={{pkmn.types[1].name}}></div> -->
-    </div>
+  </div>
 
+  <div class="box box-black padded-box stripes-light pokemon-base-stats">
+    <div *ngFor="let stat of pkmn.baseStats">
+      {{stat.stat}}: {{stat.base_stat}}
+    </div>
   </div>
 </div>

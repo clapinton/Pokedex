@@ -8,6 +8,7 @@ export class PokemonListItem {
   weight: number;
   types: Object[];
   games: Object[];
+  generations: Object[];
   baseStats: BaseStat[];
   moves: Move[];
 }

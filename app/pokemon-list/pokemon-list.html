@@ -1,5 +1,4 @@
 <h1>{{title}}</h1>
-<h2>All Pokemon</h2>
 <ul class="poke-list">
   <li class="box box-white stripes" *ngFor="let pkmn of allPokemon" (click)="onSelect(pkmn.entry_number)"
   [class.selected]="pkmn === selectedPkmn">

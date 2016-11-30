@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { PokemonListItem, BaseStat, Move } from '../pokemon';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
+import { GAMES_GENERATIONS } from '../poke-constants';
 
 import 'rxjs/add/operator/map';
 
@@ -10,6 +11,7 @@ export class PokemonService {
 
   baseUrlV1: string = 'http://pokeapi.co/api/v1';
   baseUrlV2: string = 'http://pokeapi.co/api/v2';
+
 
   constructor(private http: Http) {
     this.extractOnePokemon = this.extractOnePokemon.bind(this);
@@ -67,6 +69,16 @@ export class PokemonService {
 
     const capitalize = str => str.replace(/\b\w/g, l => l.toUpperCase());
 
+    const calculateGenerations = games => {
+      let gens = [];
+      games.forEach(game => {
+        // debugger
+        let gen = this.GAMES_GENERATIONS[game.name];
+        if (!gens.find( g => g.name === gen.name)) gens.push(gen);
+      })
+      return gens.reverse();
+    }
+
 
     let body = res.json();
     console.log("this is the data body: ", body);
@@ -79,25 +91,13 @@ export class PokemonService {
     pkmn.weight = body.weight;
     pkmn.types = body.types.map(tp => tp.type);
     pkmn.games = body.game_indices.map(game => game.version);
+    pkmn.generations = calculateGenerations(pkmn.games);
     pkmn.baseStats = extractStats(body.stats);
     pkmn.moves = extractMoves(body.moves);
 
     console.log("This is the final extracted pkmn: ", pkmn);
 
     return pkmn;
-  }
-
-  getMoveType(move): string {
-    let moveType;
-    let observable = this.http.get(move.url).map(this.extractMoveType);
-    observable.subscribe(type => moveType = type);
-    // This returns before the API result. Need to rework to account for async response
-    return moveType;
-  }
-
-  extractMoveType(res: Response) {
-    let body = res.json();
-    return body.type.name;
   }
 
   getPokemonDescription(pkmnSpecies): Observable<string> {
@@ -109,5 +109,19 @@ export class PokemonService {
     // flavor_text_entries is an array with many versions and languages. [1] is the description for the latest version in english
     const description = body.flavor_text_entries[1].flavor_text.replace(/\n/g, " ");
     return description;
+  }
+
+
+  // This returns before the API result. Need to rework to account for async response
+  getMoveType(move): string {
+    let moveType;
+    let observable = this.http.get(move.url).map(this.extractMoveType);
+    observable.subscribe(type => moveType = type);
+    return moveType;
+  }
+
+  extractMoveType(res: Response) {
+    let body = res.json();
+    return body.type.name;
   }
 }

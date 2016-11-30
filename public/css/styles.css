@@ -8,6 +8,16 @@
   )
 }
 
+.stripes-light {
+  background:  repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    rgba(201,201,201,0.1) 8px,
+    rgba(201,201,201,0.1) 10px
+  )
+}
+
 .stripes-inverted {
   background:  repeating-linear-gradient(
     -45deg,
@@ -25,7 +35,7 @@
 }
 
 .padded-box {
-  padding: 10px;
+  padding: 10px 20px;
 }
 
 .box-blue {
@@ -38,6 +48,7 @@
 
 .box-black {
   background-color: #3A3A3A;
+  color: white;
 }
 
 .background {
@@ -47,7 +58,8 @@
   left: 0;
   right: 0;
   z-index: -1;
-  background-image: radial-gradient(#c0392b,black);
+  background: linear-gradient(rgba(53,64,80,0.5), rgba(53,64,80,0.5)),url('http://orig08.deviantart.net/5415/f/2013/265/2/f/evolution_of_pokemon_by_lightbulb15-d6ng9vh.png') no-repeat;
+  background-size: cover;
 }
 
 .background .color {
@@ -70,4 +82,5 @@ poke-list {
 
 pokemon-detail {
   width: 70%;
+  margin: 7px 5px;
 }

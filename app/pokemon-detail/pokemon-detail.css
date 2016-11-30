@@ -7,6 +7,12 @@
 .pokemon-main-detail {
 }
 
+.pokemon-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .pokemon-id, .pokemon-name {
   text-align: center;
   font-size: 20px;
@@ -19,4 +25,234 @@
 }
 
 .pokemon-meta {
+}
+
+.pokemon-types-games {
+  min-width: 260px;
+}
+
+.pokemon-types {
+  display: flex;
+  justify-content: center;
+}
+
+.type {
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 7px;
+  text-shadow: black 2px 2px 0px;
+  box-shadow: black 0px 2px;
+}
+
+.type:hover {
+  cursor: default;
+}
+
+.type-water {
+  background-color: #3498db;
+}
+
+.type-fire {
+  background-color: #e74c3c;
+}
+
+.type-grass {
+  background-color: #2ecc71;
+}
+
+.type-electric {
+  background-color: #f1c40f;
+}
+
+.type-dark {
+  background-color: #2c3e50;
+}
+
+.type-psychic {
+  background-color: #ec54cc;
+}
+
+.type-ice {
+  background-color: #60c3f3;
+}
+
+.type-flying {
+  background-color: #95a5a6;
+}
+
+.type-ground {
+  background-color: #e7833c;
+}
+
+.type-rock {
+  background-color: #7f8c8d;
+}
+
+.type-normal {
+  background-color: #bdc3c7;
+}
+
+.type-fighting {
+  background-color: #e67e22;
+}
+
+.type-poison {
+  background-color: #9b59b6;
+}
+
+.type-ghost {
+  background-color: #34495e;
+}
+
+.type-dragon {
+  background-color: #f39c12;
+}
+
+.type-bug {
+  background-color: #1abc9c;
+}
+
+.type-steel {
+  background-color: #95a5a6;
+}
+
+.type-fairy {
+  background-color: #8e44ad;
+}
+
+.pokemon-games {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+
+}
+
+.generation {
+  border-radius: 50%;
+  background: red;
+  width: 20px;
+  text-align: center;
+  font-size: 8px;
+  box-shadow: black 0px 0px 10px -4px inset;
+  color: white;
+  position: relative;
+  text-shadow: black 1px 1px;
+}
+
+.generation:hover {
+  cursor: default;
+}
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  background: #7f8c8d;
+  min-width: 240px;
+  top: 25px;
+  left: -110px;
+  text-align: center;
+  border-radius: 7px;
+}
+
+.gen-disabled {
+  filter: grayscale(100%);
+}
+
+.gen-disabled:after {
+  content: '';
+  background-color: rgba(0,0,0,0.5);
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+
+.gen-bw {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#444444+0,444444+50,e1e1e1+51,e1e1e1+100 */
+  background: #444444; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #444444 0%, #444444 50%, #e1e1e1 51%, #e1e1e1 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #444444 0%,#444444 50%,#e1e1e1 51%,#e1e1e1 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #444444 0%,#444444 50%,#e1e1e1 51%,#e1e1e1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', endColorstr='#e1e1e1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.gen-bw:hover .tooltip-gen-bw {
+  visibility: visible;
+}
+
+.gen-hgss {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b69e00+0,b69e00+50,95a5a6+51,95a5a6+100 */
+  background: #b69e00; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #b69e00 0%, #b69e00 50%, #95a5a6 51%, #95a5a6 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #b69e00 0%,#b69e00 50%,#95a5a6 51%,#95a5a6 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #b69e00 0%,#b69e00 50%,#95a5a6 51%,#95a5a6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b69e00', endColorstr='#95a5a6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.gen-hgss:hover .tooltip-gen-hgss {
+  visibility: visible;
+}
+
+.gen-dpp {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#aaaaff+0,aaaaff+33,ffaaaa+34,ffaaaa+66,999999+67,999999+100 */
+  background: #aaaaff; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #aaaaff 0%, #aaaaff 33%, #ffaaaa 34%, #ffaaaa 66%, #999999 67%, #999999 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #aaaaff 0%,#aaaaff 33%,#ffaaaa 34%,#ffaaaa 66%,#999999 67%,#999999 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #aaaaff 0%,#aaaaff 33%,#ffaaaa 34%,#ffaaaa 66%,#999999 67%,#999999 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aaaaff', endColorstr='#999999',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.gen-dpp:hover .tooltip-gen-dpp {
+  visibility: visible;
+}
+
+.gen-frlg {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e74c3c+0,e74c3c+50,2ecc71+51,2ecc71+100 */
+  background: #e74c3c; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #e74c3c 0%, #e74c3c 50%, #2ecc71 51%, #2ecc71 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #e74c3c 0%,#e74c3c 50%,#2ecc71 51%,#2ecc71 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #e74c3c 0%,#e74c3c 50%,#2ecc71 51%,#2ecc71 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e74c3c', endColorstr='#2ecc71',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.gen-frlg:hover .tooltip-gen-frlg {
+  visibility: visible;
+}
+
+.gen-rse {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c0392b+0,c0392b+33,2980b9+34,2980b9+66,27ae60+67,27ae60+100 */
+  background: #c0392b; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #c0392b 0%, #c0392b 33%, #2980b9 34%, #2980b9 66%, #27ae60 67%, #27ae60 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #c0392b 0%,#c0392b 33%,#2980b9 34%,#2980b9 66%,#27ae60 67%,#27ae60 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #c0392b 0%,#c0392b 33%,#2980b9 34%,#2980b9 66%,#27ae60 67%,#27ae60 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0392b', endColorstr='#27ae60',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.gen-rse:hover .tooltip-gen-rse {
+  visibility: visible;
+}
+
+
+.gen-gsc {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f39c12+0,f39c12+33,bdc3c7+34,bdc3c7+66,1abc9c+67,1abc9c+100 */
+  background: #f39c12; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #f39c12 0%, #f39c12 33%, #bdc3c7 34%, #bdc3c7 66%, #1abc9c 67%, #1abc9c 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #f39c12 0%,#f39c12 33%,#bdc3c7 34%,#bdc3c7 66%,#1abc9c 67%,#1abc9c 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #f39c12 0%,#f39c12 33%,#bdc3c7 34%,#bdc3c7 66%,#1abc9c 67%,#1abc9c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f39c12', endColorstr='#1abc9c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.gen-gsc:hover .tooltip-gen-gsc {
+  visibility: visible;
+}
+
+.gen-rby {
+  color: white;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e74c3c+0,e74c3c+33,207cca+34,3498db+66,f1c40f+67,f1c40f+100 */
+  background: #e74c3c; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #e74c3c 0%, #e74c3c 33%, #207cca 34%, #3498db 66%, #f1c40f 67%, #f1c40f 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #e74c3c 0%,#e74c3c 33%,#207cca 34%,#3498db 66%,#f1c40f 67%,#f1c40f 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #e74c3c 0%,#e74c3c 33%,#207cca 34%,#3498db 66%,#f1c40f 67%,#f1c40f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e74c3c', endColorstr='#f1c40f',GradientType=1 ); /* IE6-9 */
+}
+.gen-rby:hover .tooltip-gen-rby {
+  visibility: visible;
 }
