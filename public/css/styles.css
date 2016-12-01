@@ -125,7 +125,7 @@ table {
   left: 0;
   right: 0;
   z-index: -1;
-  background: linear-gradient(rgba(53,64,80,0.5), rgba(53,64,80,0.5)),url('./assets/images/pokemon-evolution.png') no-repeat;
+  background: linear-gradient(rgba(53,64,80,0.5), rgba(53,64,80,0.5)),url('assets/images/pokemon-evolution.png') no-repeat;
   background-size: cover;
 }
 
