@@ -22,10 +22,42 @@ Having said that:
 | Generation filter | | | |
 
 ## API
-All data shown is fetched from a public API called [PokeAPI](pokeapi.co). Although it has a lot of data available, some of it is broken up and must be extracted correctly. Let's focus on what we want:m
+All data shown is fetched from a public API called [PokeAPI](pokeapi.co). Although it has a lot of data available, some of it is broken up and must be extracted correctly. Let's focus on what we want:
 
-### Name, ID, Sprite, Type, Games, Generation
-All this data can be extracted fairly easily through the response's body
+### ID, Sprite, Type, Games, Generation
+All this data can be extracted fairly easy through the response's body. Generation need some logic around it so we can have the corresponding game generation from the Game itself.
+
+### Name
+Even though we get a `name` property on the body of the response, that name is often times formatted in some particular way, sometimes with dashes, sometimes with comments, and even with "mega" forms appended to it. Since we only want the name, that can be extracted from the `species` property.
+
+### Base Stats
+This information comes from the property `base_stats`, but  is then treated so we get the name, value and percentage according to the Pokemon with the highest stat. The percentage will later be used when rendering the stats bars.
+
+### Other data
+There's plenty of other information on the response body, such as Moves. They will be incorporated at a later time.
+
+### Follow Up Calls
+In order to get information on games' generations, as well as base stats, it is possible to issue API calls to the corresponding URL, but that would mean extra loading time. Since I wanted to reduce that time, and considering that the information can be easily calculated on the client side, I opted for performing those types of extractions manually. For example: to get the game's generation:
+
+```javascript
+export const GAMES_GENERATIONS: Object = {
+  'red': {name: 'gen-rby', fullName: 'Red • Blue • Yellow', number: 1},
+  'green': {name: 'gen-rby', fullName: 'Red • Blue • Yellow', number: 1},
+  'blue': {name: 'gen-rby', fullName: 'Red • Blue • Yellow', number: 1},
+  'yellow': {name: 'gen-rby', fullName: 'Red • Blue • Yellow', number: 1},
+  'gold': {name: 'gen-gsc', fullName: 'Gold • Silver • Crystal', number: 2},
+  'silver': {name: 'gen-gsc', fullName: 'Gold • Silver • Crystal', number: 2},
+  'crystal': {name: 'gen-gsc', fullName: 'Gold • Silver • Crystal', number: 2},
+  // etc for other gens
+const calculateGenerations = games => {
+  let gens = [];
+  games.forEach(game => {
+    let gen = GAMES_GENERATIONS[game.name];
+    if (!gens.find( g => g.name === gen.name)) gens.push(gen);
+  })
+  return gens.reverse();
+}
+```
 
 ## Components
 There are two main components which are rendered through the main `app.component`:
@@ -77,3 +109,45 @@ A few things are worth noticing:
 * `this.fetchingStatus` is used to determine the loading spinner's status.
 
 ### PokemonListComponent
+The `PokemonListComponent` has two main variables, which are decorated accordingly:
+
+```javascript
+@Input() allPokemon: PokemonListItem[];
+@Output() selectPokemon = new EventEmitter<PokemonListItem>();
+```
+
+On the HTML side, there's a loop that goes through `allPokemon`, printing one by one:
+```html
+<li class="box box-white stripes"
+*ngFor="let pkmn of allPokemon"
+(click)="onSelect(pkmn.entry_number)"
+[class.poke-selected]="pkmn.entry_number === selectedPkmnId">
+...
+</li>
+```
+
+The `[class.poke-selected]="pkmn.entry_number === selectedPkmnId"` is responsible for toggling the `.poke-selected` class to whatever Pokemon is clicked on. From there, we can change how a clicked item is stylized.
+
+### PokemonDetailComponent
+The `pokemon-detail.component` is more of a render component than the `pokemon-list.component`. All the data that is passed has already been prepared following the API response.
+
+On the html side, we render the spinner icon while the fetchingStatus, defined previously in `app.component` has some value. The Pokemon content itself only gets loaded after the description API response arrives:
+
+```html
+<div *ngIf="fetchingStatus" class="loading">
+  <img src="/assets/images/pikachu-waiting.gif"/>
+  <p>Fetching {{fetchingStatus}}</p>
+</div>
+
+
+<div *ngIf="pkmn && pkmn.description" class="pokemon-detail">
+...
+</div>
+```
+
+## Helper Files
+Three main helper files were added:
+
+* **extractor.ts:** contains various functions to extract the correct data from the API responses;
+* **helpers.ts:** helper functions to format string, calculate percentages, format numbers etc;
+* **poke-constants.ts**: to avoid extra API calls, some constants were defined so more relevant information could be extracted.
