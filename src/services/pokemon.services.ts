@@ -21,8 +21,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PokemonService {
 
-  baseUrlV1: string = 'http://pokeapi.co/api/v1';
-  baseUrlV2: string = 'http://pokeapi.co/api/v2';
+  baseUrlV1: string = 'https://pokeapi.co/api/v1';
+  baseUrlV2: string = 'https://pokeapi.co/api/v2';
 
 
   constructor(private http: Http) {};
