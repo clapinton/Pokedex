@@ -18,13 +18,13 @@ import { OnInit } from '@angular/core';
       </div>
 
       <div *ngIf="!allPokemon" class="loading">
-        <img src="http://orig05.deviantart.net/20e3/f/2014/227/0/0/pikahcu_pokemon_x_and_y_by_wittnebenbrian-d7v97vf.gif"/>
+        <img src="/assets/images/pikachu-waiting.gif"/>
         <p>Loading...</p>
       </div>
 
       <div class="pokedex-body">
         <poke-list [allPokemon]="allPokemon" (selectPokemon)='selectPokemon($event)'></poke-list>
-        <pokemon-detail [pkmn]="selectedPkmn"></pokemon-detail>
+        <pokemon-detail [pkmn]="selectedPkmn" [listClick]="listClick"></pokemon-detail>
 
       </div>
 
@@ -39,6 +39,8 @@ export class AppComponent implements OnInit {
   //
   allPokemon: PokemonListItem[];
 
+  listClick: boolean = false; //If true, shows the loading spinner. Set to false when API call returns
+
   constructor(private pokemonServices: PokemonService) {};
 
   ngOnInit(): void {
@@ -51,6 +53,9 @@ export class AppComponent implements OnInit {
   }
 
   selectPokemon(pkmn: number) {
+    this.selectedPkmn = null;
+    this.listClick = true;
+
     this.pokemonServices.getOnePokemonV2(pkmn).subscribe( pokemon => {
       this.selectedPkmn = pokemon;
 
@@ -58,6 +63,7 @@ export class AppComponent implements OnInit {
       this.pokemonServices.getPokemonDescription(pkmnSpecies)
         .subscribe( description => {
           this.selectedPkmn.description = description;
+          this.listClick = false;
       });
     })
   }

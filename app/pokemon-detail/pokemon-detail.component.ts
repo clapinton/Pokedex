@@ -11,11 +11,11 @@ import { PokemonListItem } from '../pokemon';
 
 export class PokemonDetailComponent {
   //Notation to clarify that hero is an input to the component
-  @Input()
-  pkmn: PokemonListItem;
+  @Input() pkmn: PokemonListItem;
+  @Input() listClick: boolean;
 
   formatPkmnId(pkmnId) {
     return ("00" + pkmnId).slice(-3);
   }
-  
+
 };

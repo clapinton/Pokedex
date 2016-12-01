@@ -76,7 +76,7 @@
   left: 0;
   right: 0;
   z-index: -1;
-  background: linear-gradient(rgba(53,64,80,0.5), rgba(53,64,80,0.5)),url('http://orig08.deviantart.net/5415/f/2013/265/2/f/evolution_of_pokemon_by_lightbulb15-d6ng9vh.png') no-repeat;
+  background: linear-gradient(rgba(53,64,80,0.5), rgba(53,64,80,0.5)),url('/assets/images/pokemon-evolution.png') no-repeat;
   background-size: cover;
 }
 

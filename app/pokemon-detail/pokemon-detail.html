@@ -17,6 +17,12 @@ Moves
 
  -->
 
+ <div *ngIf="listClick" class="loading">
+   <img src="/assets/images/pikachu-waiting.gif"/>
+   <p>Loading...</p>
+ </div>
+
+
 <div *ngIf="pkmn && pkmn.description" class="pokemon-detail">
 
 
