@@ -15,8 +15,8 @@ require('rxjs/add/operator/map');
 let PokemonService = class PokemonService {
     constructor(http) {
         this.http = http;
-        this.baseUrlV1 = 'http://pokeapi.co/api/v1';
-        this.baseUrlV2 = 'http://pokeapi.co/api/v2';
+        this.baseUrlV1 = 'https://pokeapi.co/api/v1';
+        this.baseUrlV2 = 'https://pokeapi.co/api/v2';
     }
     ;
     getAllPokemon() {
@@ -45,7 +45,7 @@ let PokemonService = class PokemonService {
     }
 };
 PokemonService = __decorate([
-    core_1.Injectable(), 
+    core_1.Injectable(),
     __metadata('design:paramtypes', [http_1.Http])
 ], PokemonService);
 exports.PokemonService = PokemonService;
