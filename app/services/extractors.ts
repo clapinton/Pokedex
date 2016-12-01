@@ -13,7 +13,7 @@ export const extractAllPokemon = res => {
   return body.pokemon_entries || {};
 };
 
-export const extractStats:BaseStat[] = stats => {
+export const extractStats = stats => {
   let allStats = [];
   stats.forEach( (st, idx) => {
     let newStat = new BaseStat();
