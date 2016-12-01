@@ -24,7 +24,7 @@ import { OnInit } from '@angular/core';
 
       <div class="pokedex-body">
         <poke-list [allPokemon]="allPokemon" (selectPokemon)='selectPokemon($event)'></poke-list>
-        <pokemon-detail [pkmn]="selectedPkmn" [listClick]="listClick"></pokemon-detail>
+        <pokemon-detail [pkmn]="selectedPkmn" [fetchingStatus]="fetchingStatus"></pokemon-detail>
 
       </div>
 
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   //
   allPokemon: PokemonListItem[];
 
-  listClick: boolean = false; //If true, shows the loading spinner. Set to false when API call returns
+  fetchingStatus: string = null; //If true, shows the loading spinner. Set to false when API call returns
 
   constructor(private pokemonServices: PokemonService) {};
 
@@ -54,16 +54,17 @@ export class AppComponent implements OnInit {
 
   selectPokemon(pkmn: number) {
     this.selectedPkmn = null;
-    this.listClick = true;
+    this.fetchingStatus = 'Pokemon';
 
     this.pokemonServices.getOnePokemonV2(pkmn).subscribe( pokemon => {
       this.selectedPkmn = pokemon;
+      this.fetchingStatus = 'description';
 
       const pkmnSpecies = pokemon.species;
       this.pokemonServices.getPokemonDescription(pkmnSpecies)
         .subscribe( description => {
           this.selectedPkmn.description = description;
-          this.listClick = false;
+          this.fetchingStatus = null;
       });
     })
   }

@@ -99,7 +99,7 @@
 }
 
 poke-list {
-  max-height: 85vh;
+  max-height: 80vh;
   overflow: scroll;
   width: 20%;
   min-width: 230px;

@@ -26,6 +26,7 @@ export const extractStats:BaseStat[] = stats => {
     allStats.push(newStat);
   });
 
+  // Calculates total stats
   let totalStat = new BaseStat();
   totalStat['stat'] = "Total";
   totalStat['base_stat'] =

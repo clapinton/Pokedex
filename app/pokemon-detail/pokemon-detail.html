@@ -17,9 +17,9 @@ Moves
 
  -->
 
- <div *ngIf="listClick" class="loading">
+ <div *ngIf="fetchingStatus" class="loading">
    <img src="/assets/images/pikachu-waiting.gif"/>
-   <p>Loading...</p>
+   <p>Fetching {{fetchingStatus}}</p>
  </div>
 
 
