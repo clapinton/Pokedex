@@ -1,5 +1,7 @@
 # ngPokedex
 
+[Gotta know'em all!](https://clapinton.github.io/angular-pokedex/)
+
 ngPokedex is a SPA project I built in order to experiment with Angular after learning the React framework. The goal was to familiarize myself with the differences between the two and how to build and deploy an Angular app.
 
 ### A note on folder architecture and ng-cli
