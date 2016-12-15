@@ -12,6 +12,7 @@ import { capitalize, formatPkmnId } from '../helpers';
 export class PokemonListComponent {
 
   @Input() allPokemon: PokemonListItem[];
+
   @Output() selectPokemon = new EventEmitter<PokemonListItem>();
 
   selectedPkmnId: number;

@@ -12,7 +12,10 @@
   </div>
 
   <div class="pokedex-body">
-    <poke-list [allPokemon]="allPokemon" (selectPokemon)='selectPokemon($event)'></poke-list>
+    <div *ngIf = "allPokemon" class="pokemon-list-filters">
+      <poke-filter [allPokemon]="allPokemon" (filterPokemon)='filterPokemon($event)'></poke-filter>
+      <poke-list [allPokemon]="filteredPokemon" (selectPokemon)='selectPokemon($event)'></poke-list>
+    </div>
     <pokemon-detail [pkmn]="selectedPkmn" [fetchingStatus]="fetchingStatus"></pokemon-detail>
 
   </div>

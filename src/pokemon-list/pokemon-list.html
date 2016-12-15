@@ -1,10 +1,12 @@
-<ul class="poke-list">
-  <li class="box box-white stripes" *ngFor="let pkmn of allPokemon" (click)="onSelect(pkmn.entry_number)"
-  [class.poke-selected]="pkmn.entry_number === selectedPkmnId">
-    <span class="badge box box-blue stripes"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pkmn.entry_number}}.png"/></span>
-    <div class="poke-name">
-      <div class="pokemon-name">{{capitalize(pkmn.pokemon_species.name)}}</div>
-      <div class="pokemon-id">{{formatPkmnId(pkmn.entry_number)}}</div>
-    </div>
-  </li>
-</ul>
+<div>
+  <ul class="poke-list">
+    <li class="box box-white stripes" *ngFor="let pkmn of allPokemon" (click)="onSelect(pkmn.entry_number)"
+    [class.poke-selected]="pkmn.entry_number === selectedPkmnId">
+      <span class="badge box box-blue stripes"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pkmn.entry_number}}.png"/></span>
+      <div class="poke-name">
+        <div class="pokemon-name">{{capitalize(pkmn.pokemon_species.name)}}</div>
+        <div class="pokemon-id">{{formatPkmnId(pkmn.entry_number)}}</div>
+      </div>
+    </li>
+  </ul>
+</div>

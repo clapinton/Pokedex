@@ -7,6 +7,7 @@ del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
+input,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
@@ -127,9 +128,6 @@ table {
   background-size: cover;
 }
 
-.background .color {
-}
-
 .pokedex {
   width: 1000px;
   margin: auto;
@@ -145,9 +143,8 @@ table {
   justify-content: space-around;
 }
 
-poke-list {
-  max-height: 80vh;
-  overflow: scroll;
+.pokemon-list-filters {
+  color: red;
   width: 20%;
   min-width: 230px;
 }

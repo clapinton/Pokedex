@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   selectedPkmn: PokemonListItem;
   //
   allPokemon: PokemonListItem[];
+  filteredPokemon: PokemonListItem[];
 
   fetchingStatus: string = null; //If true, shows the loading spinner. Set to false when API call returns
 
@@ -28,7 +29,15 @@ export class AppComponent implements OnInit {
 
   getAllPokemon(): void {
     //When we subscribe, the Observable service runs
-    this.pokemonServices.getAllPokemon().subscribe( pkmns => this.allPokemon = pkmns );
+    this.pokemonServices.getAllPokemon().subscribe( pkmns => {
+      this.allPokemon = pkmns 
+      this.filteredPokemon = pkmns 
+    });
+  }
+
+  filterPokemon(pokemonList):void {
+    this.filteredPokemon = pokemonList;
+    
   }
 
   selectPokemon(pkmn: number) {
