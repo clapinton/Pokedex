@@ -17,10 +17,10 @@ Having said that:
 | App is built on Angular | DEPLOYED | |
 | Pokemon information is fetched from PokeAPI | DEPLOYED | |
 | List all Pokemon (name, number, sprite) | DEPLOYED | |
-| Display details when Pokemon is selected | In Progress | |
+| Display details when Pokemon is selected | DEPLOYED | |
 | Display moves in details screen | | |
-| Search bar | | |
-| Type filter | | |
+| Search bar | DEPLOYED | |
+| Type filter | In Progress | |
 | Generation filter | | | |
 
 ## API
