@@ -145,12 +145,13 @@ table {
 
 .pokemon-list-filters {
   color: red;
-  width: 20%;
+  width: 30%;
   min-width: 230px;
+  position: relative;
 }
 
 pokemon-detail {
-  width: 70%;
+  width: 60%;
   margin: 7px 5px;
 }
 
