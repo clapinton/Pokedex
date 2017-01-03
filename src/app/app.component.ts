@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllPokemon();
+    this.getAllTypes();
   }
 
   getAllPokemon(): void {
@@ -35,9 +36,15 @@ export class AppComponent implements OnInit {
     });
   }
 
+  getAllTypes(): void {
+    this.pokemonServices.getAllTypes().subscribe( types => {
+      console.log(types);
+    })
+  }
+
   filterPokemon(pokemonList):void {
-    this.filteredPokemon = pokemonList;
-    
+    // If the filter returns null, that means we are not filtering anything.
+    this.filteredPokemon = (pokemonList) ? pokemonList : this.allPokemon; 
   }
 
   selectPokemon(pkmn: number) {

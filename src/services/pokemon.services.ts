@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import {
   extractAllPokemon,
+  extractAllTypes,
   extractOnePokemon,
   extractStats,
   extractDescription,
@@ -33,11 +34,11 @@ export class PokemonService {
     return this.http.get(allPokemonUrl).map(extractAllPokemon);
   }
 
-  // getOnePokemonV1(pkmn): Observable<PokemonListItem> {
-  //   console.log("pokemon is", pkmn)
-  //   const pkmnUrl = `${this.baseUrlV1}/pokemon/${pkmn}`;
-  //   return this.http.get(pkmnUrl).map(this.extractOnePokemon);
-  // }
+  getAllTypes(): Observable<Object[]> {
+    //This is a cold Observable. It needs a subscriber in order to execute
+    const allTypesUrl = `${this.baseUrlV2}/type`;
+    return this.http.get(allTypesUrl).map(extractAllTypes);
+  }
 
   getOnePokemonV2(pkmn): Observable<PokemonListItem> {
     const onePokemonUrl = `${this.baseUrlV2}/pokemon/${pkmn}`;

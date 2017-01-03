@@ -13,12 +13,22 @@ export const extractAllPokemon = res => {
   return body.pokemon_entries || {};
 };
 
+export const extractAllTypes = res => {
+  let allTypes = res.json().results;
+  let mappedPokemonTypes = {};
+
+  return allTypes || {};
+};
+
 export const extractStats = stats => {
   let allStats = [];
   stats.forEach( (st, idx) => {
     let newStat = new BaseStat();
 
     newStat['stat'] = removeDashCapitalize(st.stat.name);
+    if (st.stat.name === 'special-defense') newStat['stat'] = 'Special Def';
+    if (st.stat.name === 'special-attack') newStat['stat'] = 'Special Atk';
+    
     let biggestStat = BIGGEST_BASE_STATS[st.stat.name];
     newStat['base_stat'] = st.base_stat;
     newStat['percent'] = calculatePercent(biggestStat, st.base_stat);
