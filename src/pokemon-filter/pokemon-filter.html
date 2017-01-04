@@ -1,4 +1,5 @@
 <div class="filter-buttons">
+  <p (click)="onFilterByType('all')">All</p>
   <p *ngFor="let pkmnType of allPkmnTypes" (click)="onFilterByType(pkmnType)">{{pkmnType}}</p>
 </div>
 
@@ -6,5 +7,5 @@
   <div class="box box-blue badge stripes">
     <img src='../assets/images/search-glass.png' />
   </div>
-  <input #searchBox class="" type="text" (keyup)="executeFilters(searchBox.value)" placeholder="Name or #">
+  <input #searchBox class="" type="text" (keyup)="onPkmnQueryChange(searchBox.value)" placeholder="Name or #">
 </div>
