@@ -15,7 +15,8 @@ export class PokemonFilterComponent {
   @Output() filterPokemon = new EventEmitter();
 
   pkmnQuery: String = "";
-  pkmnTypeFilter: number[] = [];
+  pkmnFilteredByType: number[] = [];
+  typeFilter: String = "all";
   filtered: PokemonListItem[];
 
   // Needed to make allTypes available to the HTML template
@@ -32,10 +33,11 @@ export class PokemonFilterComponent {
   }
 
   onFilterByType(selectedType) {
-    if (selectedType === "All") {
-      this.pkmnTypeFilter = [];
+    this.typeFilter = selectedType;
+    if (selectedType === "all") {
+      this.pkmnFilteredByType = [];
     } else {
-      this.pkmnTypeFilter = pkmnTypesInfo[selectedType].pkmnList;
+      this.pkmnFilteredByType = pkmnTypesInfo[selectedType].pkmnList;
     }
     this.executeFilters();
   }
@@ -50,14 +52,14 @@ export class PokemonFilterComponent {
   }
 
   filterByType() {
-    if (this.pkmnTypeFilter.length === 0) {
+    if (this.pkmnFilteredByType.length === 0) {
       //If no type filter selected, then proceed to filter by query using allPokemon
       this.filtered = this.allPokemon; 
     } else {
       //If a type filter is selected, add the pkmn to the array 
       this.filtered = [];
       let idx;
-      this.pkmnTypeFilter.forEach( pkmnId => {
+      this.pkmnFilteredByType.forEach( pkmnId => {
         //The pkmnId is translated to the array index by subtracting 1 (ex.: Bulba becomes 0)
         idx = pkmnId - 1;
         this.filtered.push(this.allPokemon[idx]);

@@ -1,7 +1,7 @@
 <div class="filter-buttons">
-  <p class='filter-button filter-all' (click)="onFilterByType('All')">All</p>
+  <p class='filter-button filter-all' [class.filter-button-selected]="typeFilter === 'all'" (click)="onFilterByType('all')">All</p>
   <ul>
-    <li *ngFor="let pkmnType of allTypes" (click)="onFilterByType(pkmnType)" class="filter-button type-{{pkmnType}}">{{pkmnTypesInfo[pkmnType].displayText}}</li>
+    <li *ngFor="let pkmnType of allTypes" (click)="onFilterByType(pkmnType)" class="filter-button type-{{pkmnType}}" [class.filter-button-selected]="typeFilter === pkmnType">{{pkmnTypesInfo[pkmnType].displayText}}</li>
   </ul>
 </div>
 

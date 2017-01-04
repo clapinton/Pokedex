@@ -33,8 +33,10 @@
 
 .filter-buttons {
     position: absolute;
-    top: -50px;
+    top: 10px;
     left: -15px;
+    height: 80vh;
+    overflow: scroll;
 }
 
 .filter-buttons ul {
@@ -57,14 +59,19 @@
     color: white;
     text-shadow: black 2px 2px 0px;
     box-shadow: black 0px 2px;
+    opacity: 0.5;
 }
 
-.filter-button:last-child, .filter-button:nth-last-child(2) {
+.filter-button:hover, .filter-button-selected {
+    opacity: 1;
+}
+
+ul .filter-button:last-child, ul .filter-button:nth-last-child(2) {
     margin-bottom: 0;
 }
 
 .filter-all {
-    margin: 0 auto 20px;
+    margin: 0 auto 10px;
     background: white;
     color: black;
     text-shadow: #bbb 2px 2px 0px;

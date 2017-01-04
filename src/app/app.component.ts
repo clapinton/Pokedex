@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
 
   getAllTypes(): void {
     this.pokemonServices.getAllTypes().subscribe( types => {
-      console.log(types);
     })
   }
 
