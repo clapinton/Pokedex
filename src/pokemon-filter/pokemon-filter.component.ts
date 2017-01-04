@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { PokemonListItem } from '../pokemon';
-import { capitalize, searchByName, searchByNumber } from '../helpers';
-import { allTypes, mappedPkmnTypes } from '../types'; 
+import { searchByName, searchByNumber } from '../helpers';
+import { allTypes, pkmnTypesInfo } from '../types'; 
 
 @Component({
   selector: 'poke-filter',
@@ -19,7 +19,8 @@ export class PokemonFilterComponent {
   filtered: PokemonListItem[];
 
   // Needed to make allTypes available to the HTML template
-  allPkmnTypes = allTypes;
+  allTypes = allTypes;
+  pkmnTypesInfo = pkmnTypesInfo;
 
   ngOnChanges(changes) {
     this.filtered = this.allPokemon;
@@ -31,10 +32,10 @@ export class PokemonFilterComponent {
   }
 
   onFilterByType(selectedType) {
-    if (selectedType === "all") {
+    if (selectedType === "All") {
       this.pkmnTypeFilter = [];
     } else {
-      this.pkmnTypeFilter = mappedPkmnTypes[selectedType];
+      this.pkmnTypeFilter = pkmnTypesInfo[selectedType].pkmnList;
     }
     this.executeFilters();
   }

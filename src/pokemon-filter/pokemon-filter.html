@@ -1,6 +1,8 @@
 <div class="filter-buttons">
-  <p (click)="onFilterByType('all')">All</p>
-  <p *ngFor="let pkmnType of allPkmnTypes" (click)="onFilterByType(pkmnType)">{{pkmnType}}</p>
+  <p class='filter-button filter-all' (click)="onFilterByType('All')">All</p>
+  <ul>
+    <li *ngFor="let pkmnType of allTypes" (click)="onFilterByType(pkmnType)" class="filter-button type-{{pkmnType}}">{{pkmnTypesInfo[pkmnType].displayText}}</li>
+  </ul>
 </div>
 
 <div class="search-input box stripes-light">

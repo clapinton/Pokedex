@@ -1,6 +1,6 @@
 .search-input {
     font-size: 13px;
-    margin: 7px 5px 20px 75px;
+    margin: 7px 5px 20px 105px;
     max-width: 220px;
     background-color: #3A3A3A;
     color: white;
@@ -33,6 +33,43 @@
 
 .filter-buttons {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -50px;
+    left: -15px;
+}
+
+.filter-buttons ul {
+    display: flex;
+    width: 115px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-button {
+    border-radius: 50%;
+    border: solid 3px #363636;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    margin: 0 5px 15px;
+    color: white;
+    text-shadow: black 2px 2px 0px;
+    box-shadow: black 0px 2px;
+}
+
+.filter-button:last-child, .filter-button:nth-last-child(2) {
+    margin-bottom: 0;
+}
+
+.filter-all {
+    margin: 0 auto 20px;
+    background: white;
+    color: black;
+    text-shadow: #bbb 2px 2px 0px;
+}
+
+.filter-button:hover {
+    cursor: pointer;
 }

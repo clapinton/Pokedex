@@ -7,13 +7,14 @@
   padding: 0;
   font-size: 13px;
   max-height: 70vh;
-  overflow: scroll;  
+  overflow: scroll;
+  margin-left: 105px; 
 }
 .poke-list li {
   cursor: pointer;
   position: relative;
   left: 0;
-  margin: 7px 5px 7px 75px;
+  margin: 7px 5px 7px 0;
   display: flex;
   color: black;
   align-items: center;
