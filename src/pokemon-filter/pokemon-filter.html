@@ -1,6 +1,5 @@
 <div class="filter-buttons">
-  <p id="fire">Fire</p>
-  <p id="water">Water</p>
+  <p *ngFor="let pkmnType of allPkmnTypes" (click)="onFilterByType(pkmnType)">{{pkmnType}}</p>
 </div>
 
 <div class="search-input box stripes-light">
